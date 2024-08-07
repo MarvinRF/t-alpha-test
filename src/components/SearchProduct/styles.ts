@@ -16,6 +16,7 @@ export const Header = styled.div`
   align-items: center;
   padding: 0 26rem;
   white-space: nowrap;
+
   @media (max-width: 1440px) {
     flex-direction: column;
     justify-content: center;
@@ -23,10 +24,9 @@ export const Header = styled.div`
     align-items: center;
   }
 `;
+
 export const HeaderTitle = styled.h1`
-  @media (max-width: 1024px) {
-    margin-bottom: 0.2rem;
-  }
+  cursor: pointer;
 `;
 
 export const CardContainer = styled.div`
@@ -35,11 +35,6 @@ export const CardContainer = styled.div`
   justify-content: center;
   gap: 20px;
   margin-top: 30px;
-
-  @media (max-width: 1440px) {
-    align-items: center;
-    margin-bottom: 50px;
-  }
 `;
 
 export const Card = styled.div`

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../services/api";
 import {
   PageContainer,
@@ -11,8 +11,9 @@ import {
   FormContainer,
 } from "./styles";
 
-const CreateProduct: React.FC = () => {
+const UpdateProduct: React.FC = () => {
   const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
 
   const [values, setValues] = useState({
     name: "",
@@ -29,6 +30,46 @@ const CreateProduct: React.FC = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (!id) {
+      alert("ID do produto não fornecido.");
+      navigate("/admin");
+      return;
+    }
+
+    const fetchProduct = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          alert("Token não encontrado.");
+          navigate("/login");
+          return;
+        }
+
+        const headers = {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        };
+
+        const response = await api.get(`/api/products/update-product/${id}`, {
+          headers,
+        });
+        if (response.data) {
+          setValues(response.data);
+        } else {
+          alert("Produto não encontrado.");
+          navigate("/admin");
+        }
+      } catch (error) {
+        console.error("Erro ao carregar o produto:", error);
+        alert("Erro ao carregar o produto");
+        navigate("/admin");
+      }
+    };
+
+    fetchProduct();
+  }, [id, navigate]);
 
   const validate = () => {
     const newErrors: any = {};
@@ -64,11 +105,19 @@ const CreateProduct: React.FC = () => {
 
       try {
         const token = localStorage.getItem("token");
+        if (!token) {
+          alert("Token não encontrado.");
+          navigate("/login");
+          return;
+        }
+
         const headers = {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         };
-        await api.post(
-          "/api/products/create-product",
+
+        await api.patch(
+          `/api/products/update-product/${id}`,
           {
             ...values,
             price: Number(values.price),
@@ -79,11 +128,11 @@ const CreateProduct: React.FC = () => {
           }
         );
 
-        alert("Produto criado com sucesso!");
+        alert("Produto atualizado com sucesso!");
         navigate("/admin");
       } catch (error) {
-        console.error(error);
-        alert("Erro ao criar produto");
+        console.error("Erro ao atualizar produto:", error);
+        alert("Erro ao atualizar produto");
       } finally {
         setIsSubmitting(false);
       }
@@ -94,9 +143,10 @@ const CreateProduct: React.FC = () => {
     <PageContainer>
       <Header>
         <HeaderTitle onClick={() => navigate("/admin")}>T-Alfa</HeaderTitle>
-        <h2>Criar Produto</h2>
+        <h2>Atualizar Produto</h2>
       </Header>
       <FormContainer onSubmit={handleSubmit}>
+        <div>Você está alterando o produto com ID: {id}</div>
         <Label htmlFor="name">Nome do Produto</Label>
         <Input
           type="text"
@@ -142,11 +192,11 @@ const CreateProduct: React.FC = () => {
         {errors.stock && <div>{errors.stock}</div>}
 
         <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Criando..." : "Criar Produto"}
+          {isSubmitting ? "Atualizando..." : "Atualizar Produto"}
         </Button>
       </FormContainer>
     </PageContainer>
   );
 };
 
-export default CreateProduct;
+export default UpdateProduct;

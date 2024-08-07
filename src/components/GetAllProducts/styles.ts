@@ -4,6 +4,9 @@ export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+  margin-bottom: 50px;
+  background-color: #007bff;
 `;
 
 export const Header = styled.div`
@@ -16,6 +19,7 @@ export const Header = styled.div`
   align-items: center;
   padding: 0 26rem;
   white-space: nowrap;
+
   @media (max-width: 1440px) {
     flex-direction: column;
     justify-content: center;
@@ -23,7 +27,9 @@ export const Header = styled.div`
     align-items: center;
   }
 `;
+
 export const HeaderTitle = styled.h1`
+  cursor: pointer;
   @media (max-width: 1024px) {
     margin-bottom: 0.2rem;
   }
@@ -44,7 +50,7 @@ export const CardContainer = styled.div`
 
 export const Card = styled.div`
   width: 200px;
-  height: 200px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,66 +76,4 @@ export const CardImage = styled.img`
   height: 100px;
   object-fit: cover;
   margin-bottom: 0.3rem;
-`;
-
-export const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const ModalContainer = styled.div`
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
-  position: relative;
-`;
-
-export const ModalTitle = styled.h2`
-  margin-bottom: 30px;
-`;
-
-export const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-`;
-
-export const Input = styled.input`
-  width: 100%;
-  padding: 8px;
-  margin-top: 3px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-`;
-
-export const Button = styled.button`
-  margin-top: 12px;
-  padding: 10px;
-  background: #007bff;
-  color: white;
-  width: 100%;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
-
-export const Label = styled.label`
-  display: block;
 `;

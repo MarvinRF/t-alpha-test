@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "./modal";
 import { useNavigate } from "react-router-dom";
 import {
   PageContainer,
@@ -17,7 +18,12 @@ import UpdateProductImage from "../../assets/update-product.png";
 import DeleteProductImage from "../../assets/delete-product.png";
 
 const AdminPage: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+
+  const handleUpdateClick = () => {
+    setIsModalOpen(true);
+  };
 
   return (
     <PageContainer>
@@ -41,7 +47,7 @@ const AdminPage: React.FC = () => {
           <CardImage src={SearchProductImage} alt="Buscar Produto" />
           <CardTitle>Buscar Produto</CardTitle>
         </Card>
-        <Card onClick={() => navigate("/update-product")}>
+        <Card onClick={handleUpdateClick}>
           <CardImage src={UpdateProductImage} alt="Atualizar Produto" />
           <CardTitle>Atualizar Produto</CardTitle>
         </Card>
@@ -50,6 +56,7 @@ const AdminPage: React.FC = () => {
           <CardTitle>Deletar Produto</CardTitle>
         </Card>
       </CardContainer>
+      {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
     </PageContainer>
   );
 };

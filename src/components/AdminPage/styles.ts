@@ -29,12 +29,6 @@ export const HeaderTitle = styled.h1`
   }
 `;
 
-export const HeaderSubTitle = styled.h1`
-  @media (max-width: 1024px) {
-    margin-bottom: 0.2rem;
-  }
-`;
-
 export const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;

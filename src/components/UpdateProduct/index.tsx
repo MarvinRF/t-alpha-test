@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import api from "../services/api";
+import axios from "axios";
 import {
   PageContainer,
   Header,
@@ -52,11 +52,14 @@ const UpdateProduct: React.FC = () => {
           "Content-Type": "application/json",
         };
 
-        const response = await api.get(`/api/products/update-product/${id}`, {
-          headers,
-        });
+        const response = await axios.get(
+          `https://interview.t-alpha.com.br/api/products/get-one-product/${id}`,
+          {
+            headers,
+          }
+        );
         if (response.data) {
-          setValues(response.data);
+          setValues(response.data.data.product);
         } else {
           alert("Produto não encontrado.");
           navigate("/admin");
@@ -116,8 +119,8 @@ const UpdateProduct: React.FC = () => {
           "Content-Type": "application/json",
         };
 
-        await api.patch(
-          `/api/products/update-product/${id}`,
+        await axios.patch(
+          `https://interview.t-alpha.com.br/api/products/update-product/${id}`,
           {
             ...values,
             price: Number(values.price),

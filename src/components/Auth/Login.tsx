@@ -14,9 +14,10 @@ import api from "../services/api";
 
 interface LoginProps {
   onSwitchToSignup: () => void;
+  onLoginSuccess: () => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onSwitchToSignup }) => {
+const Login: React.FC<LoginProps> = ({ onSwitchToSignup, onLoginSuccess }) => {
   const [taxNumber, setTaxNumber] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,15 +32,11 @@ const Login: React.FC<LoginProps> = ({ onSwitchToSignup }) => {
       api.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${response.data.token}`;
-      alert("Login realizado com sucesso!");
-      // Redirecionar para a página principal ou dashboard
-    } catch (error: any) {
-      if (error.response && error.response.status === 400) {
-        alert("CPF/CNPJ ou senha inválidos. Por favor, tente novamente.");
-      } else {
-        console.error("Erro durante o login:", error);
-        alert("Erro ao realizar login. Tente novamente mais tarde.");
-      }
+
+      onLoginSuccess(); // Navega para a página de administração
+    } catch (error) {
+      console.error(error);
+      alert("Usuário ou senha inválidos");
     }
   };
 

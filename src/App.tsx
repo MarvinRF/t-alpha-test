@@ -13,7 +13,7 @@ import CreateProduct from "./components/CreateProduct";
 //import GetAllProducts from "./components/GetAllProducts";
 //import GetProduct from "./components/GetProduct";
 //import UpdateProduct from "./components/UpdateProduct";
-//import DeleteProduct from "./components/DeleteProduct";
+import DeleteProduct from "./components/DeleteProduct";
 
 const App: React.FC = () => {
   return (
@@ -25,10 +25,11 @@ const App: React.FC = () => {
           <Route path="/signup" element={<CadastroWrapper />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/create-product" element={<CreateProduct />} />
+          <Route path="/delete-product" element={<DeleteProduct />} />
           {/*<Route path="/get-all-products" element={<GetAllProducts />} />
           <Route path="/get-product" element={<GetProduct />} />
           <Route path="/update-product" element={<UpdateProduct />} />
-          <Route path="/delete-product" element={<DeleteProduct />} />
+          } />
           */}
         </Routes>
       </Router>

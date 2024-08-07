@@ -27,11 +27,10 @@ const Login: React.FC<LoginProps> = ({ onSwitchToSignup, onLoginSuccess }) => {
         taxNumber,
         password,
       });
-      localStorage.setItem("token", response.data.data.token);
+      const token = response.data.data.token;
+      localStorage.setItem("token", token);
 
-      api.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${response.data.token}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
       onLoginSuccess(); // Navega para a página de administração
     } catch (error) {

@@ -15,19 +15,39 @@ interface CadastroProps {
 }
 
 const Cadastro: React.FC<CadastroProps> = ({ onSwitchToLogin }) => {
+  const [name, setName] = useState("");
   const [taxNumber, setTaxNumber] = useState("");
+  const [mail, setMail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignup = async () => {
     try {
-      await api.post("/api/auth/signup", {
-        taxNumber,
-        password,
-      });
+      // Obtém o token do localStorage, se necessário
+      const token = localStorage.getItem("token");
+
+      // Configura o cabeçalho Authorization se o token estiver presente
+      const headers = token ? { Authorization: `Bearer ${token}` } : undefined;
+
+      // Envia a requisição para criar um novo usuário
+      const response = await api.post(
+        "/api/auth/register",
+        {
+          name,
+          taxNumber,
+          mail,
+          phone,
+          password,
+        },
+        {
+          headers: headers,
+        }
+      );
+
       alert("Usuário cadastrado com sucesso");
       onSwitchToLogin();
     } catch (error) {
-      console.error(error);
+      console.error("Erro ao cadastrar usuário:", error);
       alert("Erro ao cadastrar usuário");
     }
   };
@@ -36,6 +56,14 @@ const Cadastro: React.FC<CadastroProps> = ({ onSwitchToLogin }) => {
     <PageContainer>
       <FormContainer>
         <Title>Cadastro</Title>
+        <Label>Nome</Label>
+        <Input
+          type="text"
+          required
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Digite o seu nome"
+        />
         <Label>CPF ou CNPJ</Label>
         <Input
           type="text"
@@ -43,6 +71,22 @@ const Cadastro: React.FC<CadastroProps> = ({ onSwitchToLogin }) => {
           value={taxNumber}
           onChange={(e) => setTaxNumber(e.target.value)}
           placeholder="Digite o seu CPF ou CNPJ"
+        />
+        <Label>Email</Label>
+        <Input
+          type="email"
+          required
+          value={mail}
+          onChange={(e) => setMail(e.target.value)}
+          placeholder="Digite o seu email"
+        />
+        <Label>Telefone</Label>
+        <Input
+          type="text"
+          required
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="Digite o seu telefone"
         />
         <Label>Senha</Label>
         <Input

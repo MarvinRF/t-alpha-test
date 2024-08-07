@@ -28,8 +28,8 @@ const DeleteProduct: React.FC = () => {
   const handleDelete = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (productId === null) {
-      alert("Por favor, insira o ID do produto");
+    if (productId === null || isNaN(productId)) {
+      alert("Por favor, insira um ID de produto válido");
       return;
     }
 

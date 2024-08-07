@@ -27,7 +27,7 @@ const Login: React.FC<LoginProps> = ({ onSwitchToSignup, onLoginSuccess }) => {
         taxNumber,
         password,
       });
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.data.token);
 
       api.defaults.headers.common[
         "Authorization"

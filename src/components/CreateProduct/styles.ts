@@ -5,6 +5,7 @@ export const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  background-color: #007bff;
 `;
 
 export const Header = styled.header`
@@ -12,31 +13,37 @@ export const Header = styled.header`
   background-color: #fff;
   width: 100%;
   display: flex;
+  height: 5rem;
   justify-content: space-between;
   align-items: center;
   padding: 0 26rem;
-  white-space: nowrap;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
 
   @media (max-width: 1440px) {
     flex-direction: column;
     justify-content: center;
-    height: 7rem;
-    align-items: center;
+    height: auto;
+    padding: 1rem;
   }
 `;
 
 export const HeaderTitle = styled.h1`
   font-size: 2rem;
+  cursor: pointer;
+  margin: 0;
+
   @media (max-width: 1024px) {
-    margin-bottom: 0.2rem;
     font-size: 1.8rem;
   }
 `;
 
 export const HeaderSubTitle = styled.h2`
   font-size: 1.6rem;
+  margin: 0;
+
   @media (max-width: 1024px) {
-    margin-bottom: 0.2rem;
     font-size: 1.4rem;
   }
 `;
@@ -44,25 +51,30 @@ export const HeaderSubTitle = styled.h2`
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 600px;
+  width: 600px;
   padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f0f0f0;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    width: 400px;
+  }
 `;
 
 export const Input = styled.input`
-  margin-bottom: 10px;
-  padding: 10px;
+  margin-bottom: 15px;
+  padding: 12px;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 1rem;
 `;
 
 export const Button = styled.button`
-  padding: 10px 20px;
+  padding: 12px 20px;
   background-color: #007bff;
   font-weight: bold;
   color: #fff;
@@ -70,6 +82,8 @@ export const Button = styled.button`
   border-radius: 4px;
   cursor: pointer;
   margin-top: 20px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
 
   &:hover {
     background-color: #0056b3;
@@ -78,6 +92,8 @@ export const Button = styled.button`
 
 export const Label = styled.label`
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-weight: bold;
+  font-size: 1rem;
+  color: #333;
 `;

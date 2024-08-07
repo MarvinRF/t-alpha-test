@@ -10,11 +10,23 @@ import {
   FormContainer,
 } from "./styles";
 
+const formatPrice = (value: number): string => {
+  // Adiciona separador de milhar e formato de decimal
+  return value.toLocaleString("pt-BR", { minimumFractionDigits: 2 });
+};
+
 const CreateProduct: React.FC = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState<number | string>(0);
   const [stock, setStock] = useState(0);
+
+  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // Remove caracteres não numéricos e converte para número
+    const numericValue = parseFloat(value.replace(/\./g, "").replace(",", "."));
+    setPrice(isNaN(numericValue) ? 0 : numericValue);
+  };
 
   const handleCreateProduct = async () => {
     try {
@@ -59,11 +71,11 @@ const CreateProduct: React.FC = () => {
 
         <Label htmlFor="price">Preço do Produto</Label>
         <Input
-          type="number"
+          type="text"
           id="price"
           required
-          value={price}
-          onChange={(e) => setPrice(Number(e.target.value))}
+          value={formatPrice(typeof price === "number" ? price : 0)}
+          onChange={handlePriceChange}
           placeholder="Preço do Produto"
         />
 

@@ -122,7 +122,8 @@ const UpdateProduct: React.FC = () => {
         await axios.patch(
           `https://interview.t-alpha.com.br/api/products/update-product/${id}`,
           {
-            ...values,
+            name: values.name,
+            description: values.description,
             price: Number(values.price),
             stock: Number(values.stock),
           },

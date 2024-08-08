@@ -47,7 +47,7 @@ const CreateProduct: React.FC = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
+  // Eu utilizaria novamente o useCAllback
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setValues((prevValues) => ({
@@ -55,7 +55,7 @@ const CreateProduct: React.FC = () => {
       [name]: value,
     }));
   };
-
+ // Eu utilizaria novamente o useCAllback
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -63,10 +63,12 @@ const CreateProduct: React.FC = () => {
       setIsSubmitting(true);
 
       try {
+        // usar um localStorageService
         const token = localStorage.getItem("token");
         const headers = {
           Authorization: `Bearer ${token}`,
         };
+        // utilizar um apiService para fazer essa chamada ao inves de chamar direto a api
         await api.post(
           "/api/products/create-product",
           {

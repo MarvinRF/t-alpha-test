@@ -24,7 +24,45 @@ const AdminPage: React.FC = () => {
   const handleUpdateClick = () => {
     setIsModalOpen(true);
   };
+/**
+ * Essa observacao é mais por uma questao de modularizacao mesmo, para vc mostrar que vc sabe construir
+ * componentes mais re-utilizaveis. Eu criaria um card generico que fosse configuravel de acordo com os dados passados,
+ * algo desse genero:
+    * const AdminCard: React.FC<CardData> = ({ image, alt, title, onClick }) => (
+      <Card onClick={onClick}>
+        <CardImage src={image} alt={alt} />
+        <CardTitle>{title}</CardTitle>
+      </Card>
+    );
 
+    criaria uma lista de cards com os atributos image, alt, title, onClick
+    const cardData: CardData[] = [
+    {
+      image: CreateProductImage,
+      alt: "Criar Produto",
+      title: "Criar Produto",
+      onClick: () => navigate("/create-product"),
+    } (...))]
+
+    E no componente principal eu renderizaria dessa forma:
+    <PageContainer>
+       <Header>
+        <HeaderTitle>T-Alfa</HeaderTitle>
+        <h2>Painel da Administração</h2>
+      </Header>
+      <CardContainer>
+        {cardData.map((data, index) => (
+          <AdminCard
+            key={index}
+            image={data.image}
+            alt={data.alt}
+            title={data.title}
+            onClick={data.onClick}
+          />
+        ))}
+      </CardContainer>
+    </PageContainer
+ */
   return (
     <PageContainer>
       <Header>

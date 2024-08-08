@@ -15,6 +15,7 @@ const Modal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [id, setId] = useState("");
   const navigate = useNavigate();
 
+  //EU tornaria isso um useCallback para evitar renderizacao desnecessaria
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (id) {

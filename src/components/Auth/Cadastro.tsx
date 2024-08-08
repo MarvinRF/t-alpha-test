@@ -21,6 +21,11 @@ const Cadastro: React.FC<CadastroProps> = ({ onSwitchToLogin }) => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
+  /**
+   * Eu transformaria esse handleSignup para receber o useCallback(async () => {
+   * (...)
+   * }, [name, taxNumber, mail, phone, password, onSwitchToLogin])
+   */
   const handleSignup = async () => {
     try {
       // Obtém o token do localStorage, se necessário
@@ -30,6 +35,7 @@ const Cadastro: React.FC<CadastroProps> = ({ onSwitchToLogin }) => {
       const headers = token ? { Authorization: `Bearer ${token}` } : undefined;
 
       // Envia a requisição para criar um novo usuário
+      // Ao inves de fazer a requisicao direta a api eu criaria um apiService pra lidar com isso
       const response = await api.post(
         "/api/auth/register",
         {
@@ -51,7 +57,13 @@ const Cadastro: React.FC<CadastroProps> = ({ onSwitchToLogin }) => {
       alert("Erro ao cadastrar usuário");
     }
   };
-
+  /**
+   * Todos lugares que vc define uma funcao no onChange eu utilizaria no lugar dessa funcao, uma
+   * nova definida atraves do useCallback, assim vc melhora a performance e evita re-renderizacao por ex:
+   * const handleName = useCallback((e) => {
+   *     setName(e.target.value)
+   * },[])
+   */
   return (
     <PageContainer>
       <FormContainer>

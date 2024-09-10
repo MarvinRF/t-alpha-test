@@ -29,9 +29,13 @@ export const Header = styled.div`
 `;
 
 export const HeaderTitle = styled.h1`
+  font-size: 2.5rem; /* Aumentado para acessibilidade */
+  color: #333; /* Contraste aumentado */
   cursor: pointer;
+
   @media (max-width: 1024px) {
     margin-bottom: 0.2rem;
+    font-size: 2.2rem;
   }
 `;
 
@@ -49,8 +53,8 @@ export const CardContainer = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 200px;
-  height: 250px;
+  width: 220px; /* Aumentado para acessibilidade */
+  height: 280px; /* Aumentado para acessibilidade */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,11 +73,13 @@ export const Card = styled.div`
 export const CardTitle = styled.h3`
   margin-top: 10px;
   text-align: center;
+  font-size: 1.5rem; /* Aumentado para acessibilidade */
+  color: #333; /* Contraste aumentado */
 `;
 
 export const CardImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 110px; /* Aumentado para acessibilidade */
+  height: 110px; /* Aumentado para acessibilidade */
   object-fit: cover;
   margin-bottom: 0.3rem;
 `;

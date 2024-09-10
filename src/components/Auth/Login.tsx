@@ -30,7 +30,7 @@ const Login: React.FC<LoginProps> = ({ onSwitchToSignup, onLoginSuccess }) => {
   //   try {
   //     // Ao inves de fazer chamadas diretamente a api, eu criaria um apiService que fizesse as requisioes
   //     // por la, inclusive setando o token no header do axios para bater nos endpoints
-  //     const response = await apiService.post("/api/auth/login", 
+  //     const response = await apiService.post("/api/auth/login",
   //       taxNumber,
   //       password
   //     );
@@ -46,22 +46,22 @@ const Login: React.FC<LoginProps> = ({ onSwitchToSignup, onLoginSuccess }) => {
   //   }
   // },[taxNumber, password, onLoginSuccess]);
 
-  const handleLogin = async () => {
-    try {
-      const response = await api.post("/api/auth/login", {
-        taxNumber,
-        password,
-      });
-      const token = response.data.data.token;
-      localStorage.setItem("token", token);
+  const handleLogin = () => {
+    // try {
+    //   const response = await api.post("/api/auth/login", {
+    //     taxNumber,
+    //     password,
+    //   });
+    //   const token = response.data.data.token;
+    //   localStorage.setItem("token", token);
 
-      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    //   api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-      onLoginSuccess(); // Navega para a página de administração
-    } catch (error) {
-      console.error(error);
-      alert("Usuário ou senha inválidos");
-    }
+    onLoginSuccess(); // Navega para a página de administração
+    // } catch (error) {
+    //   console.error(error);
+    //   alert("Usuário ou senha inválidos");
+    // }
   };
 
   /**
@@ -70,13 +70,19 @@ const Login: React.FC<LoginProps> = ({ onSwitchToSignup, onLoginSuccess }) => {
    * tipo assim, ao inves de definir o setPassword, e setTaxNumber diretamente na funcao do onChange e onClick
    * eu usaria esses metodos aqui
    */
-    const handleTaxNumberChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTaxNumberChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
       setTaxNumber(e.target.value);
-    }, []);
-  
-    const handlePasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    },
+    []
+  );
+
+  const handlePasswordChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
       setPassword(e.target.value);
-    }, []);
+    },
+    []
+  );
 
   return (
     <PageContainer>

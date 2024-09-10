@@ -30,29 +30,31 @@ export const Header = styled.header`
 `;
 
 export const HeaderTitle = styled.h1`
-  font-size: 2rem;
+  font-size: 2.5rem; /* Aumentado para acessibilidade */
   cursor: pointer;
   margin: 0;
+  color: #333; /* Contraste aumentado */
+
+  @media (max-width: 1024px) {
+    font-size: 2.2rem;
+  }
+`;
+
+export const HeaderSubTitle = styled.h2`
+  font-size: 2rem; /* Aumentado para maior legibilidade */
+  margin: 0;
+  color: #555; /* Contraste adequado */
 
   @media (max-width: 1024px) {
     font-size: 1.8rem;
   }
 `;
 
-export const HeaderSubTitle = styled.h2`
-  font-size: 1.6rem;
-  margin: 0;
-
-  @media (max-width: 1024px) {
-    font-size: 1.4rem;
-  }
-`;
-
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  width: 600px;
-  padding: 20px;
+  width: 650px; /* Largura aumentada */
+  padding: 24px; /* Padding maior */
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #fff;
@@ -60,40 +62,50 @@ export const FormContainer = styled.form`
   box-sizing: border-box;
 
   @media (max-width: 768px) {
-    width: 400px;
+    width: 450px; /* Largura maior para telas pequenas */
   }
 `;
 
 export const Input = styled.input`
-  margin-bottom: 15px;
-  padding: 12px;
+  margin-bottom: 18px; /* Maior espaçamento entre inputs */
+  padding: 14px; /* Padding aumentado */
   width: 100%;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc; /* Borda mais visível */
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 1.2rem; /* Fonte maior */
+  color: #333;
+
+  &:focus {
+    border-color: #007bff;
+    outline: 3px solid #007bff; /* Destaque ao foco */
+  }
 `;
 
 export const Button = styled.button`
-  padding: 12px 20px;
+  padding: 14px 24px;
   background-color: #007bff;
   font-weight: bold;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 20px;
-  font-size: 1rem;
+  margin-top: 24px;
+  font-size: 1.2rem; /* Fonte maior */
   transition: background-color 0.3s;
 
   &:hover {
     background-color: #0056b3;
   }
+
+  &:focus {
+    outline: 3px solid #0056b3;
+  }
 `;
 
 export const Label = styled.label`
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.2rem; /* Fonte maior */
   color: #333;
 `;

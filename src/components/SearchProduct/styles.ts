@@ -4,29 +4,36 @@ export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
 `;
 
 export const Header = styled.div`
   margin-bottom: 20px;
   background-color: #fff;
   width: 100%;
-  height: 5rem;
+  height: 6rem; /* Aumentado para maior acessibilidade */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 26rem;
+  padding: 0 2rem; /* Ajustado para responsividade */
   white-space: nowrap;
 
   @media (max-width: 1440px) {
     flex-direction: column;
     justify-content: center;
-    height: 7rem;
+    height: 8rem; /* Aumentado para maior acessibilidade */
     align-items: center;
   }
 `;
 
 export const HeaderTitle = styled.h1`
+  font-size: 2rem; /* Aumentado para maior acessibilidade */
+  color: #333; /* Contraste aumentado */
   cursor: pointer;
+
+  @media (max-width: 1024px) {
+    font-size: 1.8rem; /* Ajustado para responsividade */
+  }
 `;
 
 export const CardContainer = styled.div`
@@ -38,8 +45,8 @@ export const CardContainer = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 220px; /* Aumentado para maior acessibilidade */
+  height: 250px; /* Aumentado para maior acessibilidade */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,15 +63,17 @@ export const Card = styled.div`
 `;
 
 export const CardTitle = styled.h3`
-  margin-top: 10px;
+  margin-top: 15px;
   text-align: center;
+  font-size: 1.5rem; /* Aumentado para maior acessibilidade */
+  color: #333; /* Contraste aumentado */
 `;
 
 export const CardImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 120px; /* Aumentado para maior acessibilidade */
+  height: 120px; /* Aumentado para maior acessibilidade */
   object-fit: cover;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem; /* Ajustado para maior acessibilidade */
 `;
 
 export const ModalOverlay = styled.div`
@@ -73,22 +82,25 @@ export const ModalOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7); /* Escurecido para melhor contraste */
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 export const ModalContainer = styled.div`
-  background: white;
+  background: #fff;
   padding: 20px;
   border-radius: 8px;
-  width: 300px;
+  width: 100%;
+  max-width: 400px; /* Ajustado para acessibilidade */
   position: relative;
 `;
 
 export const ModalTitle = styled.h2`
-  margin-bottom: 30px;
+  font-size: 2rem; /* Aumentado para maior acessibilidade */
+  color: #333; /* Contraste aumentado */
+  margin-bottom: 20px; /* Ajustado para acessibilidade */
 `;
 
 export const CloseButton = styled.button`
@@ -97,28 +109,31 @@ export const CloseButton = styled.button`
   right: 10px;
   background: none;
   border: none;
-  font-size: 16px;
+  font-size: 1.5rem; /* Aumentado para maior acessibilidade */
+  color: #007bff; /* Contraste aumentado */
   cursor: pointer;
 `;
 
 export const Input = styled.input`
   width: 100%;
-  padding: 8px;
-  margin-top: 3px;
-  margin-bottom: 10px;
+  padding: 12px; /* Aumentado para maior acessibilidade */
+  margin-top: 8px; /* Ajustado para maior acessibilidade */
+  margin-bottom: 12px; /* Ajustado para maior acessibilidade */
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 1.2rem; /* Aumentado para maior acessibilidade */
 `;
 
 export const Button = styled.button`
   margin-top: 12px;
-  padding: 10px;
+  padding: 12px; /* Aumentado para maior acessibilidade */
   background: #007bff;
-  color: white;
+  color: #fff;
   width: 100%;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 1.2rem; /* Aumentado para maior acessibilidade */
 
   &:hover {
     background-color: #0056b3;
@@ -127,4 +142,7 @@ export const Button = styled.button`
 
 export const Label = styled.label`
   display: block;
+  font-size: 1.2rem; /* Aumentado para maior acessibilidade */
+  color: #333; /* Contraste aumentado */
+  margin-bottom: 8px;
 `;
